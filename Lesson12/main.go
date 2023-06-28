@@ -41,7 +41,20 @@ func someString(a, b int, words ...string) {
 	fmt.Println("Result concat:", result)
 }
 
+func sumVariadic(nums ...int) int {
+	var sum int
+	for _, val := range nums {
+		sum += val
+	}
+	return sum
+}
+
+func bigFunc(aArg, bArg int) int {
+	return func(a, b int) int { return a + b + 1 }(aArg, bArg)
+}
+
 func main() {
+	fmt.Println("bigFunc:", bigFunc(10, 20))
 	res := add(10, 20)
 	fmt.Println("Result:", res)
 	fmt.Println("Result of multi:", mult(1, 2, 3, 4))
@@ -61,4 +74,8 @@ func main() {
 
 	someString(2, 10, "One", "Two")
 
+	sum1 := sumVariadic(10, 20, 30, 40, 50)
+	sliceNumber := []int{10, 20, 30}
+	sum2 := sumVariadic(sliceNumber...)
+	fmt.Println(sum1, sum2)
 }
