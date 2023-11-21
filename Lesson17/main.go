@@ -8,6 +8,8 @@ type Robot struct {
 	age          int
 }
 
+// структура с анонимными полями
+
 func printStudent(std Robot) {
 	fmt.Println("========================")
 	fmt.Println("Serial Number:", std.serialNumber)
@@ -28,6 +30,13 @@ func main() {
 	printStudent(robot1)
 
 	// анонимная структура
+	type Human struct {
+		firstName string
+		lastName  string
+		string
+		int
+		bool
+	}
 
 	anonRobot := struct {
 		serialNumber int
@@ -66,4 +75,15 @@ func main() {
 
 	fmt.Println("Age1:", (*robotPointer).age)
 	fmt.Println("Age2:", robotPointer.age) //неявное разыменование
+
+	human := &Human{
+		firstName: "Bob",
+		lastName:  "Ivanov",
+		string:    "Additional info",
+		int:       63,
+		bool:      true,
+	}
+
+	fmt.Println(human)
+
 }
