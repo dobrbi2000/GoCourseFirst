@@ -2,20 +2,24 @@ package main
 
 import "fmt"
 
-func DoSomething(pretendent interface{}) {
-	switch pretendent.(type) { //пытаемся извлечь нижележащий тип
-	case string:
-		fmt.Println("This is string")
-	case int:
-		fmt.Println("This is int")
-	default:
-		fmt.Println("Unknown type")
-	}
-}
-
 func main() {
-	DoSomething(10)
-	DoSomething("Hi")
-	DoSomething(func(a, b int) int { return a + b })
 
+	fruit := make([]string, 6)
+
+	fruit[0] = "banana"
+	fruit[1] = "cucumber" //"apple"
+	fruit[2] = "grape"
+	fruit[3] = "watermelon"
+	fruit[4] = "pineapple"
+	fruit[5] = ""
+
+	fmt.Println("Before append in fruit", fruit)
+
+	xs := fruit[1:3:3] //"cucumber" "grape"
+	xs[0] = "apple"    // "apple" "grape" "mango"
+
+	xs = append(xs, "mango")
+
+	fmt.Println("After append in fruit", fruit)
+	fmt.Println(xs)
 }
